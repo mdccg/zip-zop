@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  photoCamera: { opacity: .75 },
+
   abas: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
 
   nomeAbaSelecionada: { opacity: 1 },
 
-  conversasNaoLidas: {
+  numero: {
     marginLeft: 8,
 
     backgroundColor: 'rgba(255, 255, 255, .5)',
@@ -62,12 +64,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  qtdConversasNaoLidas: {
+  textoNumero: {
     color: paleta.wetAsphalt,
     fontSize: 12,
   },
 
-  statusInedito: {
+  bolinha: {
     marginLeft: 8,
 
     backgroundColor: 'white',

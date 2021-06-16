@@ -6,58 +6,73 @@ import PhotoCamera from './../../assets/icons/PhotoCamera';
 
 import Texto from './../Texto';
 
-const photoCamera = {
-  width:  20,
-  height: 20,
+function Aba({ nome, verificar, numero, booleano, setAbaSelecionada }) {
+  return (
+    <TouchableOpacity
+      onPress={() => setAbaSelecionada(nome)}
+      style={[styles.aba, verificar(nome, styles.abaSelecionada)]}>
+      <Texto
+        negrito
+        style={[styles.nomeAba, verificar(nome, styles.nomeAbaSelecionada)]}>
+        {nome}
+      </Texto>
+      
+      {numero ? (
+        <View style={[
+          styles.numero,
+          verificar(nome, { backgroundColor: 'rgba(255, 255, 255, 1)' })
+          ]}>
+          <Texto negrito style={styles.textoNumero}>
+            {numero > 99 ? 99 : numero}
+          </Texto>
+        </View>
+      ) : null}
 
-  fill: 'white',
-  
-  style: { opacity: .75 }
-};
+      {booleano ? (
+        <View style={[styles.bolinha, verificar(nome, styles.nomeAbaSelecionada)]} />
+      ) : null}
+    </TouchableOpacity>
+  );
+}
 
-// TODO criar um componente a partir de uma aba com opção para notificações
-
-function Navegador({ abaSelecionada = 'Conversas', conversasNaoLidas = 48, statusInedito = true }) {
-  function verificar(aba, retorno = styles.nomeAbaSelecionada) {
+function Navegador({ abaSelecionada, setAbaSelecionada, conversasNaoLidas, chamadasPerdidas, statusInedito }) {
+  function verificar(aba, retorno) {
     return aba === abaSelecionada ? retorno : null;
   }
 
   function abrirCamera() {
-    // alert('Abrindo câmera...');
+    alert('Abrindo câmera...');
   }
 
   return (
     <>
       <View style={styles.navegador}>
         <TouchableOpacity style={styles.camera} onPress={abrirCamera}>
-          <PhotoCamera {...photoCamera} />
+          <PhotoCamera
+            width={20}
+            height={20}
+            fill="white"
+            style={styles.photoCamera} />
         </TouchableOpacity>
 
         <View style={styles.abas}>
-          <TouchableOpacity style={[styles.aba, verificar('Conversas', styles.abaSelecionada)]}>
-            <Texto negrito style={[styles.nomeAba, verificar('Conversas')]}>Conversas</Texto>
+          <Aba
+            nome="Conversas"
+            verificar={verificar}
+            numero={conversasNaoLidas}
+            setAbaSelecionada={setAbaSelecionada} />
             
-            {conversasNaoLidas ? (
-              <View style={[
-                  styles.conversasNaoLidas,
-                  verificar('Conversas', {
-                    backgroundColor: 'rgba(255, 255, 255, 1)'
-                  })
-                ]}>
-                <Texto negrito style={styles.qtdConversasNaoLidas}>{conversasNaoLidas > 99 ? 99 : conversasNaoLidas}</Texto>
-              </View>
-            ) : null}
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.aba}>
-            <Texto negrito style={[styles.nomeAba, verificar('Status')]}>Status</Texto>
-          
-            {statusInedito ? <View style={[styles.statusInedito, verificar('Status')]} /> : null}
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.aba}>
-            <Texto negrito style={[styles.nomeAba, verificar('Chamadas')]}>Chamadas</Texto>
-          </TouchableOpacity>
+            <Aba
+              nome="Status"
+              verificar={verificar}
+              booleano={statusInedito}
+              setAbaSelecionada={setAbaSelecionada} />
+            
+            <Aba
+              nome="Chamadas"
+              verificar={verificar}
+              numero={chamadasPerdidas}
+              setAbaSelecionada={setAbaSelecionada} />
         </View>
       </View>
     </>

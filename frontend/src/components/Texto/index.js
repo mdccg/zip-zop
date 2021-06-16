@@ -12,16 +12,17 @@ i18n.locale     = Localization.locale;
 i18n.fallbacks = true;
 
 function Texto({
-  largura = 14,
+  tamanho = 14,
   negrito,
   italico,
 
   style,
-  children
+  children,
+  traduzir = true
 }) {
   
   const estilo = [];
-  estilo.push({ fontSize: largura });
+  estilo.push({ fontSize: tamanho });
   estilo.push(styles.robotoRegular);
 
   if(negrito) estilo.push(styles.robotoBold);
@@ -29,7 +30,7 @@ function Texto({
   
   if(negrito && italico) estilo.push(styles.robotoBoldItalic);
 
-  return <Text style={[...estilo, style]}>{typeof children === 'string' ? i18n.t(children, { defaultValue: children }) : children}</Text>;
+  return <Text style={[...estilo, style]}>{typeof children === 'string' && traduzir ? i18n.t(children, { defaultValue: children }) : children}</Text>;
 }
 
 const styles = StyleSheet.create({
