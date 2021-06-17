@@ -3,6 +3,11 @@ import { StyleSheet } from 'react-native';
 import paleta from './../../stylesheets/paleta';
 
 const styles = StyleSheet.create({
+  carrossel: {
+    flexDirection: 'column',
+    flex: 1,
+  },
+
   iniciarConversa: {
     position: 'absolute',
 

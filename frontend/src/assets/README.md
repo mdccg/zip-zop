@@ -13,6 +13,8 @@
 - [User Friends Icon | Font Awesome](https://fontawesome.com/v5.15/icons/user-friends?style=solid)
 - [User Plus Icon | Font Awesome](https://fontawesome.com/v5.15/icons/user-plus?style=solid)
 - [Message icons - 580 Free Message icons | Download PNG & SVG](https://dryicons.com/icon/rectangular-lined-speech-bubble-icon-6129)
+- [Check Icon | Font Awesome](https://fontawesome.com/v5.15/icons/check?style=solid)
+- [Check Double Icon | Font Awesome](https://fontawesome.com/v5.15/icons/check-double?style=solid)
 
 ## Cores
 

@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   },
 
   contatos: {
-    minHeight: Dimensions.get('screen').height - 136,
+    flexDirection: 'column',
+    flex: 1,
   },
   
   contatosFlatList: {

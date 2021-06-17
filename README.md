@@ -3,15 +3,21 @@
 ## _To-do list_
 
 - [X] Apagar os retalhos de código redudantes do [`Navegador`](./frontend/src/components/Navegador/index.js) e criar um novo componente para as abas;
+- [X] Adicionar idioma "Chewie";
+- [ ] Adicionar [Moment.js](https://momentjs.com/) ao projeto;
+- [ ] Decidir entre:
+  - Retornar um vetor da API e organizar as mensagens por data pelo front-end;
+  - Organizar as mensagens por data pela API e retornar um objeto ao front-end.
 - [ ] Criar arquivos simulados para compôr telas estáticas;
   - [X] Contatos;
-  - [ ] Conversas;
+  - [X] Conversas;
   - [ ] Grupos;
   - [ ] Transmissões.
 - [ ] Clonar todas as interfaces visuais;
 - [ ] Adicionar customização da tradução utilizando i18n;
 - [ ] Adicionar _carousel_ à tela inicial para navegar entre as telas;
 - [ ] [`API`] Devolver as mensagens separadas por data em um objeto;
+- [ ] [`API`] Percorrer todas as mensagens e retornar o número de mensagens não visualizadas;
 - [ ] Programar um gerador de links de convite.
 
 ---

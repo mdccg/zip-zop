@@ -103,10 +103,9 @@ function Contatos({ navigation }) {
                 <Incrementador funcao={adicionarContato} icone={UserPlusSolid}>Novo contato</Incrementador>
               </View>
             )}
-            ListFooterComponent={<View style={{ height: 92 }} />}
+            ListFooterComponent={<View style={{ height: 16 }} />}
             renderItem={({ item }) => <Contato {...item} />}
             keyExtractor={contato => contato._id}
-            // data={Array(10).fill(contatos[0])}
             data={contatos} />
         ) : null}
       </SafeAreaView>

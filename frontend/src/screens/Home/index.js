@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView, View, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 import RectangularLinedSpeechBubble from './../../assets/icons/RectangularLinedSpeechBubble';
@@ -8,8 +8,14 @@ import Texto   from './../../components/Texto';
 import Header   from './../../components/Header';
 import Navegador  from './../../components/Navegador';
 
+import Conversas from './../Conversas';
+
+import bancoMock from './../../tmp/bancoMock';
+
 function Home({ navigation }) {
   const [abaSelecionada, setAbaSelecionada] = useState('Conversas');
+
+  const [conversas, setConversas] = useState([]);
 
   const [conversasNaoLidas, setConversasNaoLidas] = useState(0);
   const [chamadasPerdidas, setChamadasPerdidas] = useState(0);
@@ -21,9 +27,12 @@ function Home({ navigation }) {
 
   function buscarConversas() {
     // TODO back-end aqui
-    setConversasNaoLidas(8);
-    setChamadasPerdidas(3);
-    setStatusInedito(true);
+    
+    let { conversasMock: conversas } = bancoMock;
+    let conversasNaoLidas = conversas.filter(({ mensagensNaoLidas }) => mensagensNaoLidas > 0).length;
+    
+    setConversas(conversas);
+    setConversasNaoLidas(conversasNaoLidas);
   }
 
   useEffect(() => {
@@ -32,17 +41,17 @@ function Home({ navigation }) {
 
   return (
     <>
-      <ScrollView>
-        <Header />
-        <Navegador
-          abaSelecionada={abaSelecionada}
-          setAbaSelecionada={setAbaSelecionada}
-          conversasNaoLidas={conversasNaoLidas}
-          chamadasPerdidas={chamadasPerdidas}
-          statusInedito={statusInedito} />
+      <Header />
+      <Navegador
+        abaSelecionada={abaSelecionada}
+        setAbaSelecionada={setAbaSelecionada}
+        conversasNaoLidas={conversasNaoLidas}
+        chamadasPerdidas={chamadasPerdidas}
+        statusInedito={statusInedito} />
 
-        <Texto negrito style={{ padding: 8 }}>Nunca pare até se orgulhar de você mesmo</Texto>
-      </ScrollView>
+      <View style={styles.carrossel}>
+        <Conversas conversas={conversas} />
+      </View>
 
       <TouchableOpacity style={styles.iniciarConversa} onPress={iniciarConversa}>
         <RectangularLinedSpeechBubble
