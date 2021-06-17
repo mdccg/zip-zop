@@ -35,7 +35,18 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
 
-  mensagem: {},
+  mensagem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  check: {
+    marginRight: 4,
+  },
+
+  textoMensagem: {
+    color: paleta.americanRiver,
+  },
 
   girondino: {
     justifyContent: 'space-evenly',
@@ -52,7 +63,9 @@ const styles = StyleSheet.create({
     backgroundColor: paleta.peterRiver,
     borderRadius: 32,
 
-    width:  20,
+    paddingRight: 8,
+    paddingLeft:  8,
+
     height: 20,
 
     justifyContent: 'center',
@@ -60,6 +73,7 @@ const styles = StyleSheet.create({
   },
 
   textoMensagensNaoLidas: {
+
     color: 'white',
     fontSize: 10,
   },

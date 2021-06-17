@@ -1,5 +1,7 @@
-import React   from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View }  from 'react-native';
+
+import bancoMock from './src/tmp/bancoMock';
 
 import Routes    from './src/Routes';
 
@@ -27,11 +29,25 @@ function App() {
     RobotoThinItalic:   require('./src/assets/fonts/Roboto/Roboto-ThinItalic.ttf'),
   });
 
-  return loaded ? (
+  const [usuario, setUsuario] = useState({});
+  const [buscandoUsuario, setBuscandoUsuario] = useState(true);
+
+  async function buscarUsuario() {
+    // TODO back-end aqui
+    let { usuarioMock: usuario } = bancoMock;
+    await setUsuario(usuario);
+    setBuscandoUsuario(false);
+  }
+
+  useEffect(() => {
+    buscarUsuario();
+  });
+
+  return !buscandoUsuario && loaded ? (
     <>
       <StatusBar backgroundColor="#2c3e50" style="light" />
       <View style={{ height: Constants.statusBarHeight }} />
-      <Routes />
+      <Routes usuario={usuario} />
     </>
   ) : <AppLoading />;
 }

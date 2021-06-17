@@ -4,11 +4,7 @@ import styles from './styles';
 
 import Texto from './../Texto';
 
-function encurtar(string, limite) {
-  return string.split('').length > limite
-    ? string.split('').splice(0, limite).join('') + '...'
-    : string;
-}
+import encurtar from './../../functions/encurtar';
 
 function Contato({ contato: { _id, fotoPerfil, nome, recado = '', contato }, apelido, notificacoesMutadas, notificacaoPersonalizada, visibilidadeMidia, grupos, bloqueado }) {
 

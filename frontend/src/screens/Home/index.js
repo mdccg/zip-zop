@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 import RectangularLinedSpeechBubble from './../../assets/icons/RectangularLinedSpeechBubble';
 
-import Texto   from './../../components/Texto';
 import Header   from './../../components/Header';
 import Navegador  from './../../components/Navegador';
 
@@ -12,7 +11,7 @@ import Conversas from './../Conversas';
 
 import bancoMock from './../../tmp/bancoMock';
 
-function Home({ navigation }) {
+function Home({ navigation, usuario = {} }) {
   const [abaSelecionada, setAbaSelecionada] = useState('Conversas');
 
   const [conversas, setConversas] = useState([]);
@@ -27,7 +26,6 @@ function Home({ navigation }) {
 
   function buscarConversas() {
     // TODO back-end aqui
-    
     let { conversasMock: conversas } = bancoMock;
     let conversasNaoLidas = conversas.filter(({ mensagensNaoLidas }) => mensagensNaoLidas > 0).length;
     
@@ -50,7 +48,10 @@ function Home({ navigation }) {
         statusInedito={statusInedito} />
 
       <View style={styles.carrossel}>
-        <Conversas conversas={conversas} />
+        <Conversas
+          conversas={conversas}
+          navigation={navigation}
+          usuario={usuario} />
       </View>
 
       <TouchableOpacity style={styles.iniciarConversa} onPress={iniciarConversa}>

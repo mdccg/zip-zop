@@ -2,9 +2,9 @@ import React from 'react';
 import { SafeAreaView, FlatList, View } from 'react-native';
 import styles from './styles';
 
-import Conversa from './../../components/Conversa';
+import ExpositorConversa from './../../components/ExpositorConversa';
 
-function Conversas({ conversas = [] }) {
+function Conversas({ conversas = [], navigation, usuario = {} }) {
   return (
     <SafeAreaView>
       {conversas.length > 0 ? (
@@ -12,8 +12,14 @@ function Conversas({ conversas = [] }) {
           style={styles.conversasFlatList}
           ListFooterComponent={<View style={{ height: 16 }} />}
           renderItem={({ item: conversa }) => {
+            
             if(conversa.tipo === 'Conversa')
-              return <Conversa {...conversa} />;
+              return (
+                <ExpositorConversa
+                  {...conversa}
+                  navigation={navigation}
+                  usuario={usuario} />
+              );
 
             return null;
           }}

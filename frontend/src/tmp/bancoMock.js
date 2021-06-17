@@ -1,4 +1,4 @@
-const usuario = {
+const usuarioMock = {
   _id: '60ca20fe63ede769d8188774',
   fotoPerfil: 'https://i.imgur.com/jXVrdVT.jpg',
   nome: 'Avrelivs Dvmbledore',
@@ -98,64 +98,90 @@ const configuracoesContatosMock = [
   }
 ];
 
-const mensagensMock = [
-  {
-    _id: '60ca9b2881f172d9237d65fb',
-    remetente: usuario,
-    mensagem: 'Bom dia, salve Maria!',
-    dataEnvio: '2021-06-17T01:52:56.515Z',
-    recebido: '2021-06-17T01:53:04.794Z', 
-    visualizado: '2021-06-17T01:53:04.794Z'
-  },
-  {
-    _id: '60ca9b383ed9f746d5c40010',
-    remetente: configuracoesContatosMock[0],
-    mensagem: 'Bom dia, Matheus!',
-    dataEnvio: '2021-06-17T01:53:22.879Z',
-    recebido: '2021-06-17T01:54:06.899Z',
-    visualizado: ''
-  },
-  {
-    _id: '60cad54f4a14ccea36a38f0e',
-    remetente: configuracoesContatosMock[0],
-    mensagem: 'Matheus, você está aí? 🤔',
-    dataEnvio: '2021-06-17T04:52:45.894Z',
-    recebido: '2021-06-17T04:52:45.894Z',
-    visualizado: ''
-  },
-  {
-    _id: '60cad7e1a3c79b2f574b84df',
-    remetente: configuracoesContatosMock[2],
-    mensagem: 'vo arregaça o corno do James ele v...',
-    dataEnvio: '2021-06-17T05:03:10.055Z',
-    recebido: '2021-06-17T05:03:10.055Z',
-    visualizado: ''
-  }
-];
-
 const conversasMock = [
   {
     _id: '60ca2029d0e21603d2fa3f96',
     tipo: 'Conversa', // enum: ['Conversa', 'Grupo', 'Transmissão']
-    contato: configuracoesContatosMock[0],
-    mensagens: {
-      '16 de junho de 2021': [mensagensMock[0], mensagensMock[1]],
-      '17 de junho de 2021': [mensagensMock[2]]
+    contato: configuracoesContatosMock[3],
+    mensagens: [
+      {
+        _id: '60ca9b2881f172d9237d65fb',
+        remetente: usuarioMock,
+        mensagem: 'Bom dia, salve Maria!',
+        envio: '2021-06-17T01:52:56.515Z',
+        recebido: '2021-06-17T01:53:04.794Z', 
+        visualizado: '2021-06-17T01:53:04.794Z'
+      },
+      {
+        _id: '60ca9b383ed9f746d5c40010',
+        remetente: configuracoesContatosMock[3],
+        mensagem: 'Bom dia, Matheus!',
+        envio: '2021-06-17T01:53:22.879Z',
+        recebido: '2021-06-17T01:54:06.899Z',
+        visualizado: '2021-06-17T17:52:14.038Z'
+      },
+      {
+        _id: '60cad54f4a14ccea36a38f0e',
+        remetente: configuracoesContatosMock[3],
+        mensagem: 'credo imagina Snape meu padastro',
+        envio: '2021-06-17T04:52:45.894Z',
+        recebido: '2021-06-17T04:52:45.894Z',
+        visualizado: '2021-06-17T17:52:14.038Z'
+      },
+      {
+        _id: '60cb8c03071a0cd573f119b6',
+        remetente: usuarioMock,
+        mensagem: 'vc tem os olhos da sua mãe pivete',
+        envio: '2021-06-17T17:52:14.038Z',
+        recebido: '2021-06-17T17:52:14.038Z',
+        visualizado: '2021-06-17T18:28:44.073Z'
+      }
+    ],
+    get mensagensNaoLidas() {
+      return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
     },
-    mensagensNaoLidas: [mensagensMock[0], mensagensMock[1], mensagensMock[2]].filter(({ visualizado }) => !visualizado).length,
     fixado: true
   },
   {
     _id: '60cad821c018fd06de0772cc',
     tipo: 'Conversa',
     contato: configuracoesContatosMock[2],
-    mensagens: {
-      '17 de junho de 2021': [mensagensMock[3]]
-    },
-    mensagensNaoLidas: [mensagensMock[3]].filter(({ visualizado }) => !visualizado).length,
+    mensagens: [
+      {
+        _id: '60cad7e1a3c79b2f574b84df',
+        remetente: configuracoesContatosMock[2],
+        mensagem: 'vo arregaça o corno do James ele vai ver só',
+        envio: '2021-06-17T05:03:10.055Z',
+        recebido: '2021-06-17T05:03:10.055Z',
+        visualizado: ''
+      }
+    ],
+    get mensagensNaoLidas() {
+      return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
+    }
   }
+  /*
+  {
+    _id: '',
+    tipo: 'Conversa',
+    contato: configuracoesContatosMock[],
+    mensagens: [
+      {
+        _id: '',
+        remetente: configuracoesContatosMock[],
+        mensagem: '',
+        envio: '',
+        recebido: '',
+        visualizado: ''
+      }
+    ],
+    get mensagensNaoLidas() {
+      return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
+    }
+  }
+  */
 ]; 
 
-const bancoMock = { contatosMock, configuracoesContatosMock, conversasMock };
+const bancoMock = { contatosMock, configuracoesContatosMock, conversasMock, usuarioMock };
 
 export default bancoMock;

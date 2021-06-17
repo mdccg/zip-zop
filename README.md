@@ -4,9 +4,9 @@
 
 - [X] Apagar os retalhos de código redudantes do [`Navegador`](./frontend/src/components/Navegador/index.js) e criar um novo componente para as abas;
 - [X] Adicionar idioma "Chewie";
-- [ ] Adicionar [Moment.js](https://momentjs.com/) ao projeto;
-- [ ] Decidir entre:
-  - Retornar um vetor da API e organizar as mensagens por data pelo front-end;
+- [X] Adicionar [Moment.js](https://momentjs.com/) ao projeto e separar as mensagens por dia;
+- [X] Decidir entre:
+  - **Retornar um vetor da API e organizar as mensagens por data pelo front-end;**
   - Organizar as mensagens por data pela API e retornar um objeto ao front-end.
 - [ ] Criar arquivos simulados para compôr telas estáticas;
   - [X] Contatos;
