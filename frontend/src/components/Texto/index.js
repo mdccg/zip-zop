@@ -13,6 +13,7 @@ i18n.fallbacks = true;
 
 function Texto({
   tamanho = 14,
+  cor,
   negrito,
   italico,
 
@@ -22,15 +23,24 @@ function Texto({
 }) {
   
   const estilo = [];
-  estilo.push({ fontSize: tamanho });
+
   estilo.push(styles.robotoRegular);
 
+  estilo.push({ fontSize: tamanho });
+
+  if(cor)     estilo.push({ color: cor });
   if(negrito) estilo.push(styles.robotoBold);
   if(italico) estilo.push(styles.robotoItalic);
   
   if(negrito && italico) estilo.push(styles.robotoBoldItalic);
 
-  return <Text style={[...estilo, style]}>{typeof children === 'string' && traduzir ? i18n.t(children, { defaultValue: children }) : children}</Text>;
+  return (
+    <Text style={[...estilo, style]}>
+      {typeof children === 'string' && traduzir
+        ? i18n.t(children, { defaultValue: children })
+        : children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({

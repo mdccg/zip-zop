@@ -25,9 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  textos: {
-    flex: 1,
-  },
+  textos: { flex: 1 },
 
   apelido: {
     fontSize: 16,
@@ -44,9 +42,7 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
 
-  textoMensagem: {
-    color: paleta.americanRiver,
-  },
+  textoMensagem: { color: paleta.americanRiver },
 
   girondino: {
     justifyContent: 'space-evenly',

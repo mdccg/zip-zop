@@ -22,19 +22,13 @@ const checkProps = {
 
 function ExpositorConversa({
   _id: idConversa,
-  tipo,
   contato: {
-    _id: idConfiguracaoContato,
-    contato: { _id: idContato, fotoPerfil, nome, recado, contato },
-    apelido, 
-    notificacoesMutadas,
-    notificacaoPersonalizada,
-    visibilidadeMidia,
-    grupos 
+    contato: {  fotoPerfil },
+    apelido
   },
   mensagens = [],
-  fixado,
   mensagensNaoLidas,
+
   navigation,
   usuario = {}
 }) {
@@ -59,25 +53,13 @@ function ExpositorConversa({
         
         <View style={styles.mensagem}>
           {escritor ? (
-            visualizado ? (
-              <CheckDoubleSolid
-                {...checkProps}
-                fill={paleta.peterRiver} />
-  
-            ) : recebido ? (
-              <CheckDoubleSolid
-                {...checkProps}
-                fill={paleta.silver} />
-  
-            ) : (
-              <CheckSolid
-                {...checkProps}
-                fill={paleta.silver} />
-            )
+            visualizado ? <CheckDoubleSolid {...checkProps} fill={paleta.peterRiver} /> :
+            recebido ?    <CheckDoubleSolid {...checkProps} fill={paleta.silver} /> :
+              <CheckSolid {...checkProps} fill={paleta.silver} />
           ) : null}
 
           <Texto traduzir={false} style={styles.textoMensagem}>
-            {encurtar(mensagem, escritor ? 34 : 32)}
+            {encurtar(mensagem, escritor ? 35 : 32)}
           </Texto>
         </View>
       </View>

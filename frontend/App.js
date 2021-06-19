@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View }  from 'react-native';
+import { View }   from 'react-native';
 
 import bancoMock from './src/tmp/bancoMock';
 
-import Routes    from './src/Routes';
+import Routes from './src/Routes';
+
+import i18n    from 'i18n-js';
+
+import moment    from 'moment';
 
 import Constants  from 'expo-constants';
 
@@ -12,6 +16,8 @@ import AppLoading  from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 
 import { StatusBar } from 'expo-status-bar';
+
+moment.updateLocale(i18n.locale.toLowerCase());
 
 function App() {
   const [loaded] = useFonts({

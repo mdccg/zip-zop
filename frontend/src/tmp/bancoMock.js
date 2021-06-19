@@ -3,7 +3,7 @@ const usuarioMock = {
   fotoPerfil: 'https://i.imgur.com/jXVrdVT.jpg',
   nome: 'Avrelivs Dvmbledore',
   recado: 'CHRISTO NIHIL PRÆPONERE',
-  contato: '+55 67 1111-1111'
+  numero: '+55 67 1111-1111'
 };
 
 const contatosMock = [
@@ -12,7 +12,7 @@ const contatosMock = [
     fotoPerfil: 'https://i.imgur.com/jXVrdVT.jpg',
     nome: 'A. Abner', // Como o próprio contato salvou seu nome, ex.: ~Fulano
     recado: 'CHRISTO NIHIL PRÆPONERE',
-    contato: '+55 11 1111-1111'
+    numero: '+55 11 1111-1111'
   },
 
   {
@@ -20,22 +20,24 @@ const contatosMock = [
     fotoPerfil: 'https://i.imgur.com/RQY730L.jpg',
     nome: 'Albus Dumbledore',
     recado: 'Hogwarts sempre estará lá para aqueles que a ela recorrerem',
-    contato: '+44 9¾ 1111-1111'
+    numero: '+44 9¾ 1111-1111'
   },
 
   {
     _id: '60ca02b38ea9e7afc26b528f',
     fotoPerfil: 'https://i.imgur.com/BXT7dxd.jpg',
     nome: 'Severus Snape',
-    contato: '+44 9¾ 2222-2222'
+    numero: '+44 9¾ 2222-2222'
   },
-  
+
   {
     _id: '60ca09ff5faec1adaa75061d',
     fotoPerfil: 'https://i.imgur.com/GRElp9O.png',
     nome: 'Harry Potter',
     recado: 'Eu juro solenemente não fazer nada de bom',
-    contato: '+44 9¾ 3333-3333'
+    numero: '+44 9¾ 3333-3333',
+    online: true,
+    vistoUltimo: '2021-06-19T21:46:50.511Z'
   },
 ];
 
@@ -104,38 +106,7 @@ const conversasMock = [
     tipo: 'Conversa', // enum: ['Conversa', 'Grupo', 'Transmissão']
     contato: configuracoesContatosMock[3],
     mensagens: [
-      {
-        _id: '60ca9b2881f172d9237d65fb',
-        remetente: usuarioMock,
-        mensagem: 'Bom dia, salve Maria!',
-        envio: '2021-06-17T01:52:56.515Z',
-        recebido: '2021-06-17T01:53:04.794Z', 
-        visualizado: '2021-06-17T01:53:04.794Z'
-      },
-      {
-        _id: '60ca9b383ed9f746d5c40010',
-        remetente: configuracoesContatosMock[3],
-        mensagem: 'Bom dia, Matheus!',
-        envio: '2021-06-17T01:53:22.879Z',
-        recebido: '2021-06-17T01:54:06.899Z',
-        visualizado: '2021-06-17T17:52:14.038Z'
-      },
-      {
-        _id: '60cad54f4a14ccea36a38f0e',
-        remetente: configuracoesContatosMock[3],
-        mensagem: 'credo imagina Snape meu padastro',
-        envio: '2021-06-17T04:52:45.894Z',
-        recebido: '2021-06-17T04:52:45.894Z',
-        visualizado: '2021-06-17T17:52:14.038Z'
-      },
-      {
-        _id: '60cb8c03071a0cd573f119b6',
-        remetente: usuarioMock,
-        mensagem: 'vc tem os olhos da sua mãe pivete',
-        envio: '2021-06-17T17:52:14.038Z',
-        recebido: '2021-06-17T17:52:14.038Z',
-        visualizado: '2021-06-17T18:28:44.073Z'
-      }
+      { _id: '60ce195d3547039678102aa0', remetente: configuracoesContatosMock[3], mensagem: `Bom dia, professor Comparotto!`, envio: '2021-06-19T16:20:45.017Z', recebido: '2021-06-19T16:20:45.017Z', visualizado: '2021-06-19T16:20:45.017Z' }, { _id: '60ce195d85e144ad3b13756c', remetente: usuarioMock, mensagem: `Bom dia, senhor Potter!`, envio: '2021-06-19T16:20:45.017Z', recebido: '2021-06-19T16:20:45.017Z', visualizado: '2021-06-19T16:20:45.017Z' }, { _id: '60ce195d06116be7af26db33', remetente: usuarioMock, mensagem: `Já foi bajulado pelo professor Dumbledore hoje?`, envio: '2021-06-19T16:20:45.018Z', recebido: '2021-06-19T16:20:45.018Z', visualizado: '2021-06-19T16:20:45.018Z' }, { _id: '60ce195d21705172e6459ad5', remetente: configuracoesContatosMock[3], mensagem: `Não é da sua conta, cabeludo sangue ruim!`, envio: '2021-06-19T16:20:45.018Z', recebido: '2021-06-19T16:20:45.018Z', visualizado: '2021-06-19T16:20:45.018Z' }, { _id: '60ce195d571ac6fab007265e', remetente: usuarioMock, mensagem: `O que foi que acabei de ler, Harry?!`, envio: '2021-06-19T16:20:45.018Z', recebido: '2021-06-19T16:20:45.018Z', visualizado: '2021-06-19T16:20:45.018Z' }, { _id: '60ce195df0d9ddb8e6449d08', remetente: usuarioMock, mensagem: `Irei castigá-lo por isso!`, envio: '2021-06-19T16:20:45.018Z', recebido: '2021-06-19T16:20:45.018Z', visualizado: '2021-06-19T16:20:45.018Z' }, { _id: '60ce195ddb44f2afd9b5b44b', remetente: usuarioMock, mensagem: `(∩｀-´)⊃━☆ﾟ.*・｡ﾟ *Imperio*`, envio: '2021-06-19T16:20:45.019Z', recebido: '2021-06-19T16:20:45.019Z', visualizado: '2021-06-19T16:20:45.019Z' }, { _id: '60ce195de2e988de1d4e03e7', remetente: usuarioMock, mensagem: `Agora me sirva três xícaras de café pelando e sem muito açúcar como forma de punição pelo que me chamou.`, envio: '2021-06-19T16:20:45.019Z', recebido: '2021-06-19T16:20:45.019Z', visualizado: '2021-06-19T16:20:45.019Z' }, { _id: '60ce195da0c19eb90c23e1cc', remetente: configuracoesContatosMock[3], mensagem: `Mil perdões, professor Comparotto! O infeliz do Draco Malfoy havia roubado o meu celular...`, envio: '2021-06-19T16:20:45.019Z', recebido: '2021-06-19T16:20:45.019Z', visualizado: '2021-06-19T16:20:45.019Z' }, { _id: '60ce195d3855b58f6e2df90e', remetente: usuarioMock, mensagem: `Oh, céus! Por que não escreveu isso logo? Agora vá preparar o café pois preciso escrever muitas linhas de código hoje.`, envio: '2021-06-19T16:20:45.019Z', recebido: '2021-06-19T16:20:45.019Z', visualizado: '2021-06-19T16:20:45.019Z' },
     ],
     get mensagensNaoLidas() {
       return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
@@ -180,8 +151,8 @@ const conversasMock = [
     }
   }
   */
-]; 
+];
 
-const bancoMock = { contatosMock, configuracoesContatosMock, conversasMock, usuarioMock };
+const bancoMock = { usuarioMock, contatosMock, configuracoesContatosMock, conversasMock };
 
 export default bancoMock;
