@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Dimensions } from 'react-native';
 import styles from './styles';
 
-import RectangularLinedSpeechBubble from './../../assets/icons/RectangularLinedSpeechBubble';
-
-import Header   from './../../components/Header';
-import Navegador  from './../../components/Navegador';
+import Navegador   from './../../components/Navegador';
+import Header     from './../../components/Header';
 
 import Conversas from './../Conversas';
+import Status    from './../Status';
+import Chamadas  from './../Chamadas';
 
 import bancoMock from './../../tmp/bancoMock';
+
+import Carousel  from 'react-native-snap-carousel';
+
+const abas = ['Conversas', 'Status', 'Chamadas'];
 
 function Home({ navigation, usuario = {} }) {
   const [abaSelecionada, setAbaSelecionada] = useState('Conversas');
@@ -20,8 +24,22 @@ function Home({ navigation, usuario = {} }) {
   const [chamadasPerdidas, setChamadasPerdidas] = useState(0);
   const [statusInedito, setStatusInedito]     = useState(false);
 
-  function iniciarConversa() {
-    navigation.navigate('Contatos');
+  const carouselRef = useRef();
+
+  const telas = [
+    { Componente: Conversas, props: { conversas, navigation, usuario } },
+    { Componente: Status,    props: { navigation } },
+    { Componente: Chamadas,  props: { navigation, usuario } }
+  ];
+
+  function atualizarAbaSelecionadaAoClicar(abaSelecionada) {
+    carouselRef.current.snapToItem(abas.indexOf(abaSelecionada));
+    setAbaSelecionada(abaSelecionada);
+  }
+
+  function atualizarAbaSelecionadaAoRolar(currentIndex) {
+    let abaSelecionada = abas[currentIndex];
+    setAbaSelecionada(abaSelecionada);
   }
 
   function buscarConversas() {
@@ -42,23 +60,22 @@ function Home({ navigation, usuario = {} }) {
       <Header />
       <Navegador
         abaSelecionada={abaSelecionada}
-        setAbaSelecionada={setAbaSelecionada}
+        setAbaSelecionada={atualizarAbaSelecionadaAoClicar}
         conversasNaoLidas={conversasNaoLidas}
         chamadasPerdidas={chamadasPerdidas}
         statusInedito={statusInedito} />
 
       <View style={styles.carrossel}>
-        <Conversas
-          conversas={conversas}
-          navigation={navigation}
-          usuario={usuario} />
+        <Carousel
+          data={telas}
+          onSnapToItem={atualizarAbaSelecionadaAoRolar}
+          renderItem={({ item: { Componente, props = {} } }) => {
+            return <Componente {...props} />;
+          }}
+          sliderWidth={Dimensions.get('window').width}
+          itemWidth={Dimensions.get('window').width}
+          ref={carouselRef} />
       </View>
-
-      <TouchableOpacity style={styles.iniciarConversa} onPress={iniciarConversa}>
-        <RectangularLinedSpeechBubble
-          width={24}
-          height={24} />
-      </TouchableOpacity>
     </>
   );
 }

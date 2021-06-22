@@ -8,8 +8,6 @@ import ShowMoreButtonWithThreeDots from './../../assets/icons/ShowMoreButtonWith
 import Texto from './../Texto';
 
 const icone = {
-  width:  16,
-  height: 16,
   fill: 'white'
 };
 
@@ -29,16 +27,16 @@ function Header() {
       <View style={styles.botoes}>
         <TouchableOpacity style={styles.botao} onPress={pesquisar}>
           <MagnifyingGlass  
-            {...icone}
              width={20}
-            height={20} />
+            height={20}
+            fill="white" />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.botao} onPress={abrirMenu}>
           <ShowMoreButtonWithThreeDots
-            {...icone}
              width={16} 
-            height={16} />
+            height={16}
+            fill="white" />
         </TouchableOpacity>
       </View>
     </View>

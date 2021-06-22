@@ -29,11 +29,18 @@ function Mensagem({ _id, remetente, mensagem, envio, recebido, visualizado, usua
 
   return (
     <Balao>
-      <Texto cor={escritor ? 'white' : 'black'} traduzir={false} style={styles.textoMensagem}>
+      <Texto
+        selecionavel
+        traduzir={false}
+        style={styles.textoMensagem}
+        cor={escritor ? 'white' : 'black'}>
         {mensagem}
       </Texto>
 
-      <Texto cor={escritor ? 'white' : 'black'} traduzir={false} style={styles.horario}>
+      <Texto
+        traduzir={false}
+        style={styles.horario}
+        cor={escritor ? 'white' : 'black'}>
         {moment(envio).format('HH[:]mm')}
       </Texto>
     </Balao>

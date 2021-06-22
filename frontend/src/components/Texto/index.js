@@ -4,6 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 import translations from './../../config/translations.json';
 
 import * as Localization from 'expo-localization';
+
 import i18n from 'i18n-js';
 
 i18n.defaultLocale = 'pt-BR';
@@ -16,6 +17,7 @@ function Texto({
   cor,
   negrito,
   italico,
+  selecionavel,
 
   style,
   children,
@@ -35,7 +37,9 @@ function Texto({
   if(negrito && italico) estilo.push(styles.robotoBoldItalic);
 
   return (
-    <Text style={[...estilo, style]}>
+    <Text
+      selectable={selecionavel}
+      style={[...estilo, style]}>
       {typeof children === 'string' && traduzir
         ? i18n.t(children, { defaultValue: children })
         : children}

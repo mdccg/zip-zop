@@ -9,15 +9,19 @@
   - **Retornar um vetor da API e organizar as mensagens por data pelo front-end;**
   - Organizar as mensagens por data pela API e retornar um objeto ao front-end.
 - [ ] Substituir o formato PNG por SVG do plano de fundo das conversas;
-- [ ] Adicionar opção de personalizar todos os planos de fundo ou de uma única conversa;
+- [ ] Levar o usuário até a última mensagem da conversa;
 - [ ] Criar arquivos simulados para compôr telas estáticas;
   - [X] Contatos;
   - [X] Conversas;
   - [ ] Grupos;
   - [ ] Transmissões.
 - [ ] Clonar todas as interfaces visuais;
+- [ ] Adicionar opção de personalizar todos os planos de fundo ou de uma única conversa;
 - [ ] Adicionar customização da tradução utilizando i18n;
-- [ ] Adicionar _carousel_ à tela inicial para navegar entre as telas;
+- [X] Adicionar _carousel_ à tela inicial para navegar entre as telas;
+- [ ] Aprimorar rolagem do _carousel_ para identificar com antecedência para qual tela o usuário deslizará; (Sugestão)
+  - Uma função para verificar para qual lado o usuário está deslizando;
+  - Outra função para confirmar que o usuário terminou de deslizar e evitar alarme falso.
 - [ ] [`API`] Percorrer todas as mensagens e retornar o número de mensagens não visualizadas;
 - [ ] Programar um gerador de links de convite.
 

@@ -6,7 +6,10 @@
     "Contatos": "Contacts",
     "contatos": "contacts",
     "Novo grupo": "Add group",
-    "Novo contato": "Add contact"
+    "Novo contato": "Add contact",
+    "Digite uma mensagem": "Type a message",
+    "Hoje": "Today",
+    "Ontem": "Yesterday"
   },
   "chewie": {
     "Conversas": "Arrggghhh",
@@ -15,6 +18,9 @@
     "Contatos": "Arrghhhh",
     "contatos": "arrghhhh",
     "Novo grupo": "Argh gahhr",
-    "Novo contato": "Argh arrghhh"
+    "Novo contato": "Argh arrghhh",
+    "Digite uma mensagem": "Arrrhh ahr hargghgg",
+    "Hoje": "Argh",
+    "Ontem": "Arggh"
   }
 }

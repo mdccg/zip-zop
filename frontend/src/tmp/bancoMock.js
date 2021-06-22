@@ -1,6 +1,6 @@
 const usuarioMock = {
   _id: '60ca20fe63ede769d8188774',
-  fotoPerfil: 'https://i.imgur.com/jXVrdVT.jpg',
+  fotoPerfil: 'https://github.com/mdccg.png',
   nome: 'Avrelivs Dvmbledore',
   recado: 'CHRISTO NIHIL PRÆPONERE',
   numero: '+55 67 1111-1111'
@@ -12,7 +12,8 @@ const contatosMock = [
     fotoPerfil: 'https://i.imgur.com/jXVrdVT.jpg',
     nome: 'A. Abner', // Como o próprio contato salvou seu nome, ex.: ~Fulano
     recado: 'CHRISTO NIHIL PRÆPONERE',
-    numero: '+55 11 1111-1111'
+    numero: '+55 11 1111-1111',
+    vistoUltimo: '2021-06-20T12:52:30.363Z'
   },
 
   {
@@ -102,6 +103,17 @@ const configuracoesContatosMock = [
 
 const conversasMock = [
   {
+    _id: '60cf383736c57a9093482a64',
+    tipo: 'Conversa',
+    contato: configuracoesContatosMock[0],
+    mensagens: [
+      { _id: '60cf3816405e8b7ebf38d205', remetente: configuracoesContatosMock[0], mensagem: `Bom dia, Aurelius!`, envio: '2021-06-20T12:44:06.939Z', recebido: '2021-06-20T12:44:06.939Z', visualizado: '2021-06-20T12:44:06.939Z' }, { _id: '60cf3816ec31fac134aea00b', remetente: configuracoesContatosMock[0], mensagem: `Já rezou o Santo Terço hoje?`, envio: '2021-06-20T12:44:06.940Z', recebido: '2021-06-20T12:44:06.940Z', visualizado: '2021-06-20T12:44:06.940Z' }, { _id: '60cf3816291c77900f506abc', remetente: usuarioMock, mensagem: `Ohayooou, A-Abner Ariel-saan >///<`, envio: '2021-06-20T12:44:06.941Z', recebido: '2021-06-20T12:44:06.941Z', visualizado: '2021-06-20T12:44:06.941Z' }, { _id: '60cf38163bf96987d0e6654f', remetente: usuarioMock, mensagem: `...🥺`, envio: '2021-06-20T12:44:06.941Z', recebido: '2021-06-20T12:44:06.941Z', visualizado: '2021-06-20T12:44:06.941Z' }, { _id: '60cf3816a57111b6dcf24423', remetente: usuarioMock, mensagem: `👉👈`, envio: '2021-06-20T12:44:06.942Z', recebido: '2021-06-20T12:44:06.942Z', visualizado: '2021-06-20T12:44:06.942Z' }, { _id: '60cf3816fc136c7312d5f5bc', remetente: usuarioMock, mensagem: `A-Ainda não, não terminei ler a ⭐ liturgia diária! ⭐ UwU`, envio: '2021-06-20T12:44:06.943Z', recebido: '2021-06-20T12:44:06.943Z', visualizado: '' },
+    ],
+    get mensagensNaoLidas() {
+      return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
+    }
+  },
+  {
     _id: '60ca2029d0e21603d2fa3f96',
     tipo: 'Conversa', // enum: ['Conversa', 'Grupo', 'Transmissão']
     contato: configuracoesContatosMock[3],
@@ -130,21 +142,14 @@ const conversasMock = [
     get mensagensNaoLidas() {
       return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;
     }
-  }
+  },
   /*
   {
     _id: '',
     tipo: 'Conversa',
     contato: configuracoesContatosMock[],
     mensagens: [
-      {
-        _id: '',
-        remetente: configuracoesContatosMock[],
-        mensagem: '',
-        envio: '',
-        recebido: '',
-        visualizado: ''
-      }
+    
     ],
     get mensagensNaoLidas() {
       return this.mensagens.filter(({ remetente, visualizado }) => remetente._id !== usuarioMock._id && !visualizado).length;

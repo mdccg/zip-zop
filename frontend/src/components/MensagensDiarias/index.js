@@ -20,7 +20,7 @@ function MensagensDiarias({ dias = {}, usuario = {} }) {
                     <Texto style={styles.textoDia} traduzir={false}>{dia}</Texto>
                   </View>
                 )}
-                ListFooterComponent={<View style={{ height: 80 }} />}
+                ListFooterComponent={<View style={{ height: 128 }} />}
                 renderItem={({ item: mensagem }) => <Mensagem {...mensagem} usuario={usuario} />}
                 keyExtractor={({ _id }) => _id}
                 data={mensagens} />
