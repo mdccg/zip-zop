@@ -62,17 +62,17 @@ function Navegador({ abaSelecionada, setAbaSelecionada, conversasNaoLidas, chama
             numero={conversasNaoLidas}
             setAbaSelecionada={setAbaSelecionada} />
             
-            <Aba
-              nome="Status"
-              verificar={verificar}
-              booleano={statusInedito}
-              setAbaSelecionada={setAbaSelecionada} />
-            
-            <Aba
-              nome="Chamadas"
-              verificar={verificar}
-              numero={chamadasPerdidas}
-              setAbaSelecionada={setAbaSelecionada} />
+          <Aba
+            nome="Status"
+            verificar={verificar}
+            booleano={statusInedito}
+            setAbaSelecionada={setAbaSelecionada} />
+          
+          <Aba
+            nome="Chamadas"
+            verificar={verificar}
+            numero={chamadasPerdidas}
+            setAbaSelecionada={setAbaSelecionada} />
         </View>
       </View>
     </>

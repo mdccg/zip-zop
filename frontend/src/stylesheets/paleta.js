@@ -3,6 +3,7 @@ const paleta = {
   wetAsphaltTenPercentIncreased: '#476380',
   wetAsphalt: '#34495e',
   midnightBlue: '#2c3e50',
+  clouds: '#ecf0f1',
   silver: '#bdc3c7',
   lightbrown: '#8d6e63',
   americanRiver: '#636e72'

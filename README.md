@@ -8,13 +8,14 @@
 - [X] Decidir entre:
   - **Retornar um vetor da API e organizar as mensagens por data pelo front-end;**
   - Organizar as mensagens por data pela API e retornar um objeto ao front-end.
-- [ ] Substituir o formato PNG por SVG do plano de fundo das conversas;
 - [ ] Levar o usuário até a última mensagem da conversa;
 - [ ] Criar arquivos simulados para compôr telas estáticas;
   - [X] Contatos;
   - [X] Conversas;
   - [ ] Grupos;
-  - [ ] Transmissões.
+  - [ ] Transmissões;
+  - [ ] Status;
+  - [ ] Chamadas.
 - [ ] Clonar todas as interfaces visuais;
 - [ ] Adicionar opção de personalizar todos os planos de fundo ou de uma única conversa;
 - [ ] Adicionar customização da tradução utilizando i18n;
@@ -61,8 +62,9 @@ O app permitirá ao usuário selecionar um dos idiomas disponíveis e cadastrar 
 
 <div style="flex-direction: row; align-items: center;">
   <img width="216px" src="https://i.imgur.com/Ddh68kz.png" alt="Tela de carregamento" />
-  <img width="216px" src="https://i.imgur.com/fa6AvLT.png" alt="Frase em português brasileiro" />
-  <img width="216px" src="https://i.imgur.com/pe39nIJ.png" alt="Phrase in english" />
+  <img width="216px" src="https://i.imgur.com/034ulVy.png" alt="Contatos" />
+  <img width="216px" src="https://i.imgur.com/IObjpcd.png" alt="Conversas" />
+  <img width="216px" src="https://i.imgur.com/cLuKL6B.png" alt="Conversa com Harry Potter" />
 </div>
 
 ---
