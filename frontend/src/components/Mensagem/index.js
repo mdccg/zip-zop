@@ -37,12 +37,14 @@ function Mensagem({ _id, remetente, mensagem, envio, recebido, visualizado, usua
         {mensagem}
       </Texto>
 
-      <Texto
-        traduzir={false}
-        style={styles.horario}
-        cor={escritor ? 'white' : 'black'}>
-        {moment(envio).format('HH[:]mm')}
-      </Texto>
+      <View style={styles.horario}>
+        <Texto
+          traduzir={false}
+          style={styles.textoHorario}
+          cor={escritor ? 'white' : 'black'}>
+          {moment(envio).format('HH[:]mm')}
+        </Texto>
+      </View>
     </Balao>
   );
 }

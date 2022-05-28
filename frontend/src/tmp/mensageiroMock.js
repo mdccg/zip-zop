@@ -4,12 +4,8 @@ const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =
     s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
 
 const mensagens = [
-  { 'configuracoesContatosMock[0]': 'Bom dia, Aurelius!' },
-  { 'configuracoesContatosMock[0]': 'Já rezou o Santo Terço hoje?' },
-  { 'usuarioMock': 'Ohayooou, A-Abner Ariel-saan >///<' },
-  { 'usuarioMock': '...🥺' },
-  { 'usuarioMock': '👉👈' },
-  { 'usuarioMock': 'A-Ainda não, não terminei ler a ⭐ liturgia diária! ⭐ UwU' }
+  { 'usuarioMock': 'Bom dia, sr. Potter!' },
+  { 'configuracoesContatosMock[3]': 'Oh, bom dia, professor Comparotto!' }
 ];
 
 for(const objeto of mensagens) {
@@ -23,6 +19,7 @@ for(const objeto of mensagens) {
       envio: '${new Date().toISOString()}',
       recebido: '${new Date().toISOString()}',
       visualizado: '${new Date().toISOString()}'
-    },`
+    }`
   );
+  document.body.appendChild(document.createElement('br'));
 }

@@ -3,33 +3,15 @@ import { StyleSheet } from 'react-native';
 import paleta from './../../stylesheets/paleta';
 
 const styles = StyleSheet.create({
-  minhaMensagem: {
-    alignSelf: 'flex-end',
-  },
-  
-  meuTriangulo: {
-    width:  0,
-    height: 0,
-
-    borderTopWidth:   12,
-    borderRightWidth: 12,
-
-    borderBottomColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderLeftColor: 'transparent',
-
-    borderTopColor: paleta.wetAsphalt,
-  },
-
-  meuBalao: {
-    backgroundColor: paleta.wetAsphalt,
-  },
-
   mensagem: {
     margin: 8,
 
     alignItems: 'flex-start',
     flexDirection: 'row',
+  },
+
+  minhaMensagem: {
+    alignSelf: 'flex-end',
   },
   
   triangulo: {
@@ -46,6 +28,20 @@ const styles = StyleSheet.create({
     borderRightColor: 'white',
   },
 
+  meuTriangulo: {
+    width:  0,
+    height: 0,
+
+    borderTopWidth:   12,
+    borderRightWidth: 12,
+
+    borderBottomColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderLeftColor: 'transparent',
+
+    borderTopColor: paleta.wetAsphalt,
+  },
+
   balao: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -56,16 +52,32 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 2,
     borderBottomRightRadius: 2,
 
-    padding: 8,
+    padding: 12,
   },
 
-  textoMensagem: { lineHeight: 24 },
+  meuBalao: {
+    backgroundColor: paleta.wetAsphalt,
+  },
+
+  textoMensagem: {
+    paddingRight: 32,
+    
+    lineHeight: 20,
+  },
 
   horario: {
-    fontSize: 12,
+    position: 'absolute',
 
+    right:  8,
+    bottom: 8,
+
+    alignSelf: 'flex-end',
+  },
+  
+  textoHorario: {
+    fontSize: 10,
+  
     opacity: .5,
-    padding: 4,
   },
 });
 

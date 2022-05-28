@@ -9,6 +9,8 @@ function MensagensDiarias({ dias = {}, usuario = {} }) {
   return (
     <SafeAreaView style={{ zIndex: 2 }}>
       <FlatList
+        inverted
+        ListHeaderComponent={<View style={{ height: 128 }} />}
         renderItem={({ item: dia }) => {
           const mensagens = dias[dia];
 
@@ -20,7 +22,6 @@ function MensagensDiarias({ dias = {}, usuario = {} }) {
                     <Texto style={styles.textoDia} traduzir={false}>{dia}</Texto>
                   </View>
                 )}
-                ListFooterComponent={<View style={{ height: 128 }} />}
                 renderItem={({ item: mensagem }) => <Mensagem {...mensagem} usuario={usuario} />}
                 keyExtractor={({ _id }) => _id}
                 data={mensagens} />
@@ -28,7 +29,7 @@ function MensagensDiarias({ dias = {}, usuario = {} }) {
           );
         }}
         keyExtractor={item => item}
-        data={Object.keys(dias)} />
+        data={Object.keys(dias).reverse()} />
     </SafeAreaView>
   );
 }

@@ -13,6 +13,7 @@ import FlaticonPattern from './../../assets/images/FlaticonPattern/pattern.png';
 import MensagensDiarias from './../../components/MensagensDiarias';
 import Texto from './../../components/Texto';
 
+import formatarDia from './../../functions/formatarDia';
 import encurtar from './../../functions/encurtar';
 import ObjectId from './../../functions/ObjectId';
 
@@ -50,7 +51,7 @@ function Conversa({ navigation, route, usuario = {} }) {
 
   const [mensagem, setMensagem] = useState('');
 
-  function enviar() {
+  function enviarMensagem() {
     let novaMensagem = {
       _id: ObjectId(),
       remetente: usuario,
@@ -60,8 +61,14 @@ function Conversa({ navigation, route, usuario = {} }) {
       visualizado: ''
     };
 
-    console.log(novaMensagem);
-
+    var hoje = formatarDia();
+    let _dias = { ...dias };
+    
+    if(!_dias[hoje]) _dias[hoje] = [];
+    
+    _dias[hoje].push(novaMensagem);
+    
+    setDias(_dias);
     setMensagem('');
   }
 
@@ -91,23 +98,7 @@ function Conversa({ navigation, route, usuario = {} }) {
     var dias = {};
 
     for(let mensagem of mensagens) {
-      let hoje  = false;
-      let ontem  = false;
-      let formato = 'MMM Do[,] YYYY';
-
-      if(moment(mensagem.envio).format('DD/MM/YYYY') === moment().format('DD/MM/YYYY'))
-        hoje = true;
-
-      if(moment(mensagem.envio).format('DD/MM/YYYY') === moment().subtract(1, 'day').format('DD/MM/YYYY'))
-        ontem = true;
-
-      if(i18n.locale === 'pt-br') formato = 'DD [de] MMMM [de] YYYY';
-
-      let dia = (
-        hoje ? i18n.t('Hoje', { defaultValue: 'Today' }) :
-        ontem ? i18n.t('Ontem', { defaultValue: 'Yesterday' }) : 
-        moment(mensagem.envio).format(formato)
-      );
+      let dia = formatarDia(mensagem.envio);
 
       if(!dias[dia]) dias[dia] = [];
 
@@ -115,16 +106,18 @@ function Conversa({ navigation, route, usuario = {} }) {
     }
 
     var formato = 'MMM Do[,] HH[:]mm';
-
-    if(i18n.locale === 'pt-br') formato = 'MMM DD[,] HH[:]mm';
-
-    setDias(dias);
-
+    
+    if(i18n.locale === 'pt-br')
+      formato = 'MMM DD[,] HH[:]mm';
+    
     setVistoUltimo(vistoUltimo ? moment(vistoUltimo).format(formato) : '');
+    
     setFotoPerfil(fotoPerfil);
     setApelido(apelido);
     setNumero(numero);
     setOnline(online);
+    
+    setDias(dias);
   }
 
   useEffect(() => {
@@ -171,15 +164,15 @@ function Conversa({ navigation, route, usuario = {} }) {
           placeholder={i18n.t('Digite uma mensagem', { defaultValue: 'Type a message' })} />
       
         <TouchableOpacity
-          onPress={enviar}
           disabled={!mensagem}
+          onPress={enviarMensagem}
           style={[styles.enviar, !mensagem ? styles.desabilitado : null]}>
           <PaperPlaneSolid {...icone} />
         </TouchableOpacity>
       </View>
 
       <MensagensDiarias dias={dias} usuario={usuario} />
-      
+
       <Image source={FlaticonPattern} style={styles.planoFundo} />
     </>
   );

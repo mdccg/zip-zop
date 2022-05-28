@@ -13,12 +13,16 @@ import bancoMock from './../../tmp/bancoMock';
 
 import Carousel  from 'react-native-snap-carousel';
 
+const { width } = Dimensions.get('window');
+
 const abas = ['Conversas', 'Status', 'Chamadas'];
 
 function Home({ navigation, usuario = {} }) {
   const [abaSelecionada, setAbaSelecionada] = useState('Conversas');
 
   const [conversas, setConversas] = useState([]);
+  const [chamadas, setChamadas] = useState([]);
+  const [status, setStatus]     = useState([]);
 
   const [conversasNaoLidas, setConversasNaoLidas] = useState(0);
   const [chamadasPerdidas, setChamadasPerdidas] = useState(0);
@@ -27,8 +31,8 @@ function Home({ navigation, usuario = {} }) {
   const carouselRef = useRef();
 
   const telas = [
-    { Componente: Conversas, props: { conversas, navigation, usuario } },
-    { Componente: Status,    props: { navigation } },
+    { Componente: Conversas, props: { navigation, usuario, conversas } },
+    { Componente: Status,    props: { navigation, usuario, status } },
     { Componente: Chamadas,  props: { navigation, usuario } }
   ];
 
@@ -37,8 +41,8 @@ function Home({ navigation, usuario = {} }) {
     setAbaSelecionada(abaSelecionada);
   }
 
-  function atualizarAbaSelecionadaAoRolar(currentIndex) {
-    let abaSelecionada = abas[currentIndex];
+  function atualizarAbaSelecionadaAoRolar() {
+    let abaSelecionada = abas[carouselRef.current.currentIndex];
     setAbaSelecionada(abaSelecionada);
   }
 
@@ -51,8 +55,25 @@ function Home({ navigation, usuario = {} }) {
     setConversasNaoLidas(conversasNaoLidas);
   }
 
+  function buscarChamadas() {
+
+  }
+
+  function buscarStatus() {
+    // TODO back-end aqui
+    let { statusMock: status } = bancoMock;
+    let statusInedito = status.filter(({ contato, qtdStatusNaoVisualizados }) => {
+      if(contato._id === usuario._id) return false;
+      return qtdStatusNaoVisualizados > 0;
+    }).length > 0;
+    
+    setStatus(status);
+    setStatusInedito(statusInedito);
+  }
+
   useEffect(() => {
     buscarConversas();
+    buscarStatus();
   }, []);
 
   return (
@@ -68,12 +89,13 @@ function Home({ navigation, usuario = {} }) {
       <View style={styles.carrossel}>
         <Carousel
           data={telas}
+          enableMomentum
           onSnapToItem={atualizarAbaSelecionadaAoRolar}
           renderItem={({ item: { Componente, props = {} } }) => {
             return <Componente {...props} />;
           }}
-          sliderWidth={Dimensions.get('window').width}
-          itemWidth={Dimensions.get('window').width}
+          sliderWidth={width}
+          itemWidth={width}
           ref={carouselRef} />
       </View>
     </>

@@ -8,7 +8,7 @@
 - [X] Decidir entre:
   - **Retornar um vetor da API e organizar as mensagens por data pelo front-end;**
   - Organizar as mensagens por data pela API e retornar um objeto ao front-end.
-- [ ] Levar o usuário até a última mensagem da conversa;
+- [X] Levar o usuário até a última mensagem da conversa;
 - [ ] Criar arquivos simulados para compôr telas estáticas;
   - [X] Contatos;
   - [X] Conversas;

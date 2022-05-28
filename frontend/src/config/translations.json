@@ -9,7 +9,9 @@
     "Novo contato": "Add contact",
     "Digite uma mensagem": "Type a message",
     "Hoje": "Today",
-    "Ontem": "Yesterday"
+    "Ontem": "Yesterday",
+    "Meu status": "My status",
+    "Atualizações recentes": "Recent updates"
   },
   "chewie": {
     "Conversas": "Arrggghhh",
@@ -21,6 +23,8 @@
     "Novo contato": "Argh arrghhh",
     "Digite uma mensagem": "Arrrhh ahr hargghgg",
     "Hoje": "Argh",
-    "Ontem": "Arggh"
+    "Ontem": "Arggh",
+    "Meu status": "Ah arhgrh",
+    "Atualizações recentes": "Arrarggrgagh arhrharh"
   }
 }
