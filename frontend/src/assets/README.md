@@ -39,3 +39,8 @@
 
 - [Timestamp Converter](https://www.timestamp-converter.com/)
 - [javascript - Is there any way to create mongodb like _id strings without mongodb? - Stack Overflow](https://stackoverflow.com/questions/10593337/is-there-any-way-to-create-mongodb-like-id-strings-without-mongodb)
+- [Browse Fonts - Google Fonts](https://fonts.google.com/)
+- [Free vector icons - SVG, PSD, PNG, EPS & Icon Font - Thousands of free icons](https://www.flaticon.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [Playground - SVGR](https://react-svgr.com/playground/?native=true)
+- [Imgur: The magic of the Internet](https://imgur.com/)
